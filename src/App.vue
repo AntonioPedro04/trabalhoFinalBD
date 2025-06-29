@@ -1,53 +1,56 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
-</script>
-
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div id="app">
+    <div style="display: flex; align-items: center; flex-direction: column">
+      <h1>DataFut</h1>
+      <span>Campeonatos abordados: Brasileiro, Argentino, Chileno e Libertadores</span>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <JogadoresLista />
+    <SubstituicaoLista />
+    <FaixaGolLista/>
+    <EstadiosLista/>
+    <PartidasLista/>
+
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+
+import JogadoresLista from './components/JogadoresGols.vue';
+import SubstituicaoLista from './components/JogadoresSubstituicao.vue'
+import FaixaGolLista from './components/GolsPorTempo.vue'
+import EstadiosLista from './components/EstadiosPorCampeonatoBr.vue'
+import PartidasLista from './components/PartidasGols.vue'
+
+export default {
+  name: 'App',
+  components: {
+    JogadoresLista,
+    SubstituicaoLista,
+    FaixaGolLista,
+    EstadiosLista,
+    PartidasLista
+  },
+};
+</script>
+
+<style>
+body {
+  font-family: Roboto;
+  color: #3d3d3d;
+  background-color: rgb(255, 250, 219);
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #808080;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+th, td {
+  border: 1px solid rgba(204, 204, 204, 0.43);
+  color: white;
+  padding: 8px;
+}
+th {
+  background-color: #2f2f2f;
 }
 </style>
